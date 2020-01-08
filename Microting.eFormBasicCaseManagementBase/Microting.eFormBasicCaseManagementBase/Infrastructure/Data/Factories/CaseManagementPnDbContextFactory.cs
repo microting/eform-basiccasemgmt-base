@@ -30,22 +30,22 @@ using Microsoft.EntityFrameworkCore.Design;
         public eFormCaseManagementPnDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<eFormCaseManagementPnDbContext>();
-            // if (args.Any())
-            // {
-                // if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
-                // {
-                    // optionsBuilder.UseMySql(args.FirstOrDefault());
-                // }
-                // else
-                // {
-                    // optionsBuilder.UseSqlServer(args.FirstOrDefault());
-                // }
-            // }
-            // else
-            // {
-                // throw new ArgumentNullException("Connection string not present");
-            // } 
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\SharedInstance;Initial Catalog=eform-basic-case-management-base;Integrated Security=True;");
+            if (args.Any())
+            {
+                if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
+                {
+                    optionsBuilder.UseMySql(args.FirstOrDefault());
+                }
+                else
+                {
+                    optionsBuilder.UseSqlServer(args.FirstOrDefault());
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("Connection string not present");
+            } 
+            // optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\SharedInstance;Initial Catalog=eform-basic-case-management-base;Integrated Security=True;");
             // dotnet ef migrations add InitialMigration --project Microting.eFormBasicCaseManagementBase --startup-project DBMigrator
             optionsBuilder.UseLazyLoadingProxies();
             return new eFormCaseManagementPnDbContext(optionsBuilder.Options);
