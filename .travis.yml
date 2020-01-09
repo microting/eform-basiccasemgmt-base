@@ -11,7 +11,7 @@ services:
 script:
   - dotnet restore
   - dotnet build Microting.eFormBasicCaseManagementBase.sln
-  - dotnet test -v n Microting.eFormBasicCaseManagementBase.Unit.Tests/Microting.eFormBasicCaseManagementBase.Unit.Test.csproj
+  - dotnet test -v n Microting.eFormBasicCaseManagementBase.Unit.Test/Microting.eFormBasicCaseManagementBase.Unit.Test.csproj
   - export GITVERSION=`git describe --abbrev=0 --tags | cut -d "v" -f 2`
   - echo $GITVERSION
   - dotnet pack Microting.eFormBasicCaseManagementBase.sln -c Release -o ./artifacts -p:PackageVersion=$GITVERSION
