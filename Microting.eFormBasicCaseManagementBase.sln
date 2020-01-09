@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormBasicCaseMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigrator", "DBMigrator\DBMigrator.csproj", "{8372DB16-060F-4AD4-ABF8-9A760B2591E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microting.eFormBasicCaseManagementBase.Unit.Test", "Microting.eFormBasicCaseManagementBase.Unit.Test\Microting.eFormBasicCaseManagementBase.Unit.Test.csproj", "{5ECC0C9B-2F3C-4B14-8122-C2A46439BAFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8372DB16-060F-4AD4-ABF8-9A760B2591E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8372DB16-060F-4AD4-ABF8-9A760B2591E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8372DB16-060F-4AD4-ABF8-9A760B2591E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECC0C9B-2F3C-4B14-8122-C2A46439BAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECC0C9B-2F3C-4B14-8122-C2A46439BAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECC0C9B-2F3C-4B14-8122-C2A46439BAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECC0C9B-2F3C-4B14-8122-C2A46439BAFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
