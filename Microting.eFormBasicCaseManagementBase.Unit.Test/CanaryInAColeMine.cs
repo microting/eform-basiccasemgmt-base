@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Tests
+namespace Microting.eformBasicCaseManagementBase.Unit.Test
 {
     [TestFixture]
     public class CanaryInAColeMine
