@@ -7,7 +7,6 @@ addons:
   chrome: stable
   mariadb: '10.5'
 script:
-  - dotnet restore
   - dotnet build Microting.eFormBasicCaseManagementBase.sln
   - dotnet test -v n Microting.eFormBasicCaseManagementBase.Unit.Test/Microting.eFormBasicCaseManagementBase.Unit.Test.csproj
   - export GITVERSION=`git describe --abbrev=0 --tags | cut -d "v" -f 2`
