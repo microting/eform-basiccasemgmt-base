@@ -29,26 +29,13 @@ using Microsoft.EntityFrameworkCore.Design;
     {
         public eFormCaseManagementPnDbContext CreateDbContext(string[] args)
         {
+            var defaultCs = "Server = localhost; port = 3306; Database = case-mgmt-pn; user = root; Convert Zero Datetime = true;";
             var optionsBuilder = new DbContextOptionsBuilder<eFormCaseManagementPnDbContext>();
-            if (args.Any())
-            {
-                if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
-                {
-                    optionsBuilder.UseMySql(args.FirstOrDefault());
-                }
-                else
-                {
-                    optionsBuilder.UseSqlServer(args.FirstOrDefault());
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException("Connection string not present");
-            } 
-            // optionsBuilder.UseSqlServer(@"Data Source=(LocalDb)\SharedInstance;Initial Catalog=eform-basic-case-management-base;Integrated Security=True;");
-            // dotnet ef migrations add InitialMigration --project Microting.eFormBasicCaseManagementBase --startup-project DBMigrator
-            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseMySql(args.Any() ? args[0]: defaultCs);
+            optionsBuilder.UseLazyLoadingProxies(true);
+
             return new eFormCaseManagementPnDbContext(optionsBuilder.Options);
+            // dotnet ef migrations add InitialMigration --project Microting.eFormBasicCaseManagementBase --startup-project DBMigrator
         }
     }
 }

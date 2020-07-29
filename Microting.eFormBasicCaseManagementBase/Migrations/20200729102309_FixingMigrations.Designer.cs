@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormBasicCaseManagementBase.Infrastructure.Data;
 
 namespace Microting.eFormBasicCaseManagementBase.Migrations
 {
     [DbContext(typeof(eFormCaseManagementPnDbContext))]
-    partial class eFormCaseManagementPnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200729102309_FixingMigrations")]
+    partial class FixingMigrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
