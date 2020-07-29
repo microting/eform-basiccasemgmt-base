@@ -12,9 +12,8 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
         [TestFixture]
     public abstract class DbTestFixture
     {
-
-        protected eFormCaseManagementPnDbContext DbContext;
-        protected string ConnectionString;
+        private eFormCaseManagementPnDbContext _dbContext;
+        private string _connectionString;
 
         //public RentableItemsPnDbAnySql db;
 
@@ -22,30 +21,22 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
         {
 
             CaseManagementPnDbContextFactory contextFactory = new CaseManagementPnDbContextFactory();
-            DbContext = contextFactory.CreateDbContext(new[] {connectionStr});
+            _dbContext = contextFactory.CreateDbContext(new[] {connectionStr});
             
-            DbContext.Database.Migrate();
-            DbContext.Database.EnsureCreated();                
-
+            _dbContext.Database.Migrate();
+            _dbContext.Database.EnsureCreated();
         }
 
         [SetUp]
         public void Setup()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                ConnectionString = @"data source=(LocalDb)\SharedInstance;Initial catalog=case-mamangement-pn-tests;Integrated Security=True";
-            }
-            else
-            {
-                ConnectionString = @"Server = localhost; port = 3306; Database = case-mamangement-pn-tests; user = root; Convert Zero Datetime = true;";
-            }
+            _connectionString = @"Server = localhost; port = 3306; Database = case-mamangement-pn-tests; user = root; Convert Zero Datetime = true;";
 
 
-            GetContext(ConnectionString);
+            GetContext(_connectionString);
 
 
-            DbContext.Database.SetCommandTimeout(300);
+            _dbContext.Database.SetCommandTimeout(300);
 
             try
             {
@@ -53,7 +44,7 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
             }
             catch
             {
-                DbContext.Database.Migrate();
+                _dbContext.Database.Migrate();
             }
 
             DoSetup();
@@ -67,10 +58,10 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
 
             ClearFile();
 
-            DbContext.Dispose();
+            _dbContext.Dispose();
         }
 
-        public void ClearDb()
+        private void ClearDb()
         {
             List<string> modelNames = new List<string>();
             modelNames.Add("CalendarUsers");
@@ -81,16 +72,7 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
             {
                 try
                 {
-                    string sqlCmd = string.Empty;
-                    if (DbContext.Database.IsMySql())
-                    {
-                        sqlCmd = string.Format("DELETE FROM `{0}`.`{1}`", "case-mamangement-pn-tests", modelName);
-                    }
-                    else
-                    {
-                        sqlCmd = string.Format("DELETE FROM [{0}]", modelName);
-                    }
-                    DbContext.Database.ExecuteSqlCommand(sqlCmd);
+                    _dbContext.Database.ExecuteSqlRaw($"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `case-mamangement-pn-tests`.`{modelName}`");
                 }
                 catch (Exception ex)
                 {
@@ -98,14 +80,14 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
                 }
             }
         }
-        private string path;
+        private string _path;
 
-        public void ClearFile()
+        private void ClearFile()
         {
-            path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            path = System.IO.Path.GetDirectoryName(path).Replace(@"file:\", "");
+            _path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            _path = System.IO.Path.GetDirectoryName(_path).Replace(@"file:\", "");
 
-            string picturePath = path + @"\output\dataFolder\picture\Deleted";
+            string picturePath = _path + @"\output\dataFolder\picture\Deleted";
 
             DirectoryInfo diPic = new DirectoryInfo(picturePath);
 
