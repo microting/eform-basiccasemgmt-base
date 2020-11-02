@@ -44,4 +44,4 @@ jobs:
     - name: Pack
       run: dotnet pack Microting.eFormBasicCaseManagementBase.sln -c Release -o ./artifacts -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push /home/runner/work/eform-eFormBasicCaseManagementBase-base/eform-eFormBasicCaseManagementBase-base/artifacts/Microting.eFormBasicCaseManagementBase.${{ steps.get_version.outputs.VERSION }}.nupkg -k ${{secrets.NUGET_SECRET_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
+      run: dotnet nuget push /home/runner/work/eform-basiccasemgmt-base/eform-basiccasemgmt-base/artifacts/Microting.eFormBasicCaseManagementBase.${{ steps.get_version.outputs.VERSION }}.nupkg -k ${{secrets.NUGET_SECRET_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
