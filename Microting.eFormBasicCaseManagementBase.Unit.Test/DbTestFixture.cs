@@ -30,7 +30,7 @@ namespace Microting.eformBasicCaseManagementBase.Unit.Test
         [SetUp]
         public void Setup()
         {
-            _connectionString = @"Server = localhost; port = 3306; Database = case-mamangement-pn-tests; user = root; Convert Zero Datetime = true;";
+            _connectionString = @"Server = localhost; port = 3306; Database = case-mamangement-pn-tests; user = root; password = secretpassword; Convert Zero Datetime = true;";
 
 
             GetContext(_connectionString);
