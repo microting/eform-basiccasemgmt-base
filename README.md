@@ -1,5 +1,9 @@
 # eform-basiccasemgmt-base
 [![.NET Version release](https://github.com/microting/eform-basiccasemgmt-base/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/microting/eform-basiccasemgmt-base/actions/workflows/dotnet-core.yml)
+[![NuGet Badge](https://buildstats.info/nuget/Microting.eFormBasicCaseManagementBase)](https://www.nuget.org/packages/Microting.eFormBasicCaseManagementBase/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f19b70582b067e47344f/maintainability)](https://codeclimate.com/github/microting/eform-basiccasemgmt-base/maintainability)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/bf8a490b876544c2954fbf58d0279bf1)](https://www.codacy.com/gh/microting/eform-basiccasemgmt-base/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=microting/eform-basiccasemgmt-base&amp;utm_campaign=Badge_Grade)
+
 
 ## NOTICE! this is not a standalone project and needs to be used with eForm Angular Frontend.
 
