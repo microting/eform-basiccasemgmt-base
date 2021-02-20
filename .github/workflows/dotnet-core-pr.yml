@@ -1,9 +1,8 @@
-name: .NET Version release
+name: .NET Pull requests
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  pull_request:
+    branches: [ master, stable ]
 
 jobs:
   build:
@@ -34,14 +33,7 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3 | cut -d "v" -f 2)
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Unit Tests
       run: dotnet test --no-restore -c Release -v n Microting.eFormBasicCaseManagementBase.Unit.Test/Microting.eFormBasicCaseManagementBase.Unit.Test.csproj
-    - name: Pack
-      run: dotnet pack Microting.eFormBasicCaseManagementBase.sln -c Release -o ./artifacts -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
-    - name: Push generated package to GitHub registry
-      run: dotnet nuget push /home/runner/work/eform-basiccasemgmt-base/eform-basiccasemgmt-base/artifacts/Microting.eFormBasicCaseManagementBase.${{ steps.get_version.outputs.VERSION }}.nupkg -k ${{secrets.NUGET_SECRET_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
