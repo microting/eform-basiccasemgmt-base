@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.0.96](https://github.com/microting/eform-basiccasemgmt-base/tree/v2.0.96) (2021-03-16)
+
+[Full Changelog](https://github.com/microting/eform-basiccasemgmt-base/compare/v2.0.95...v2.0.96)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 2.0.101 to 2.0.103 [\#43](https://github.com/microting/eform-basiccasemgmt-base/issues/43)
+- Bump Microting.eForm from 4.4.6 to 4.4.8 [\#42](https://github.com/microting/eform-basiccasemgmt-base/issues/42)
+
 ## [v2.0.95](https://github.com/microting/eform-basiccasemgmt-base/tree/v2.0.95) (2021-03-11)
 
 [Full Changelog](https://github.com/microting/eform-basiccasemgmt-base/compare/v2.0.94...v2.0.95)
