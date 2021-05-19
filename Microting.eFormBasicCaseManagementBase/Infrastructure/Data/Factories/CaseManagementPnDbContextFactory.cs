@@ -37,7 +37,6 @@ namespace Microting.eFormBasicCaseManagementBase.Infrastructure.Data.Factories
             {
                 builder.EnableRetryOnFailure();
             });
-            optionsBuilder.UseLazyLoadingProxies(true);
 
             return new eFormCaseManagementPnDbContext(optionsBuilder.Options);
             // dotnet ef migrations add InitialMigration --project Microting.eFormBasicCaseManagementBase --startup-project DBMigrator
